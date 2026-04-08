@@ -9,27 +9,31 @@ export const metadata: Metadata = {
     "Transforming the way accounting firms operate by embedding AI-powered automation into everyday workflows.",
 };
 
+const F = '"Mazzard H", sans-serif';
+
 const agentSections = [
   {
     title: "Payroll agent",
-    icon: "/images/ps-payroll-icon.png",
-    flow: "/images/ps-payroll-flow.png",
+    icon: "/images/framer/j27Vc9VmnGmZjbWioM47WdyNK2M.png",
+    flow: "/images/framer/UgrITIUrwMaGYKLde4gOSeOs.png",
+    bg: "#f2f7fa",
     bullets: [
       "Automate payroll runs, superannuation, and STP lodgements.",
       "Ensure compliance with ATO standards.",
       "Reduce manual errors and save hours of administrative work.",
     ],
     steps: [
-      { num: "01", label: "Multiple Channels" },
-      { num: "02", label: "Timesheet" },
-      { num: "03", label: "Payrun" },
-      { num: "04", label: "Email Payslips" },
+      { num: "01", icon: "/images/framer/vfIvVjq2OTjnp5qB4KjQeJSSUI.svg", label: "Multiple Channels" },
+      { num: "02", icon: "/images/framer/JJdkpkYQkxlFCR5EWNdMgLT9cE.svg", label: "Timesheet" },
+      { num: "03", icon: "/images/framer/sYgRBJTKGJ9QM2GfNYWdjT3wwQQ.svg", label: "Payrun" },
+      { num: "04", icon: "/images/framer/64I1lbPeWZlClmOxEcxUyu1TyM.svg", label: "Email Payslips" },
     ],
   },
   {
     title: "Bookkeeping Agents",
-    icon: "/images/ps-bookkeeping-icon.png",
-    flow: "/images/ps-bookkeeping-flow.png",
+    icon: "/images/framer/ODWTpjc06KmdA151k8CH7Ck8AU.png",
+    flow: "/images/framer/bMWFIH8sF0Z10QTTKJ88QgA0sU.png",
+    bg: "#e4f4fb",
     bullets: [
       "Handle day-to-day data entry, reconciliation, and bank feeds.",
       "Automate supplier bill processing and expense categorisation.",
@@ -39,8 +43,9 @@ const agentSections = [
   },
   {
     title: "ASIC Compliance Agents",
-    icon: "/images/ps-asic-icon.png",
-    flow: "/images/ps-asic-flow.png",
+    icon: "/images/framer/c36wpepPyznIfUGnysWHHkqp4A.png",
+    flow: "/images/framer/rNkxVyF8cccrkyFGpJr8IJ3020c.png",
+    bg: "#fcfce8",
     bullets: [
       "Automate company statement reviews and reminders.",
       "Manage annual solvency resolutions, company changes, and registrations.",
@@ -50,8 +55,9 @@ const agentSections = [
   },
   {
     title: "Tax Return Agents",
-    icon: "/images/ps-tax-icon.png",
-    flow: "/images/ps-tax-flow.png",
+    icon: "/images/framer/rHfGmjjcUnccMnqCwmtU1QnFIC8.png",
+    flow: "/images/framer/k7BaIoU9O2f5C4mhhZxsXo62Qyk.png",
+    bg: "#f0f6f9",
     bullets: [
       "Automate data entry from tax forms and ATO portals.",
       "Prefill tax returns with validated client information.",
@@ -63,203 +69,413 @@ const agentSections = [
 
 const benefits = [
   {
-    title: "Competitive Edge",
+    title: "100% Instant Responses",
     desc: "Position your firm at the forefront of accounting innovation with cutting-edge AI technology.",
   },
   {
-    title: "Efficiency & Cost Savings",
+    title: "Competitive Edge",
     desc: "Reduce manual workloads and operational costs while improving overall firm productivity.",
   },
   {
-    title: "Improved Client Service",
+    title: "Reduce Overhead",
     desc: "AI calling agents ensure clients are always attended to, improving satisfaction and retention.",
-  },
-  {
-    title: "Scalability",
-    desc: "Easily onboard new clients and employees without increasing admin burden.",
-  },
-  {
-    title: "Accuracy & Compliance",
-    desc: "Reduce errors and meet regulatory requirements effortlessly with automated checks.",
   },
 ];
 
 export default function PracticeSuitePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-16 pb-8 md:pt-24 md:pb-12">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "linear-gradient(234deg, #3b82f633 -13%, #fff 40%)",
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollFadeIn>
-            {/* Lightning icon */}
-            <div className="flex justify-center mb-4">
-              <div className="w-14 h-14 rounded-full bg-[#f2e6ff] flex items-center justify-center">
-                <Image
-                  src="/images/ps-lightning.svg"
-                  alt=""
-                  width={28}
-                  height={28}
-                />
-              </div>
+      <style>{`
+        .circular-text-anim {
+          animation: spin 15s linear infinite;
+        }
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .benefit-card {
+          background: #fff;
+          border: 1px solid rgba(0,0,0,0.05);
+          border-radius: 12px;
+          padding: 20px 24px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .benefit-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+      `}</style>
+      {/* ========== HERO ========== */}
+      <section
+        style={{
+          background: "linear-gradient(180deg, #fff 0%, rgba(200,225,255,0.4) 100%)",
+          padding: "70px 24px 70px",
+          textAlign: "center",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <ScrollFadeIn>
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 30 }}>
+            {/* Static Hero Icon Container from User HTML */}
+            <div style={{ position: "relative", width: 176, height: 176, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Image 
+                src="/images/framer/hero-static-icon.svg" 
+                alt="Static Hero Icon" 
+                fill 
+                style={{ objectFit: "contain" }} 
+              />
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight max-w-3xl mx-auto">
-              <span className="gradient-text">Practice Suite</span>
-            </h1>
-            <p className="mt-6 text-base text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              We are transforming the way accounting firms operate by embedding
-              AI-powered automation into everyday workflows. Our flagship
-              product for accountants, Practice Suite is designed to reduce
-              manual workloads, improve efficiency, and enhance client
-              experiences through specialized AI agents tailored for the
-              accounting industry.
-            </p>
-            <div className="mt-8">
-              <Link
-                href="/contact-us"
-                className="inline-flex items-center px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-light transition-all btn-glow text-sm"
-              >
-                Build Agents Now
-              </Link>
+          </div>
+
+          <h1
+            style={{
+              fontFamily: F,
+              fontWeight: 700,
+              fontSize: "clamp(36px, 5vw, 60px)",
+              lineHeight: 1.15,
+              marginBottom: 20,
+            }}
+          >
+            <span className="gradient-text">Practice Suite</span>
+          </h1>
+
+          <p
+            style={{
+              fontFamily: F,
+              fontSize: 16,
+              color: "rgb(83,82,91)",
+              lineHeight: 1.7,
+              maxWidth: 680,
+              margin: "0 auto 36px",
+            }}
+          >
+            AI is transforming the way accounting firms operate. By embedding AI-powered automation into everyday workflows. Our flagship product for accountants, Practice Suite is designed to reduce manual workloads, improve efficiency, and enhance client experiences through specialized AI agents tailored for the accounting industry.
+          </p>
+
+          <Link
+            href="/contact-us"
+            className="group btn-glow inline-flex items-center justify-center transition-all duration-300"
+            style={{
+              background: "rgb(59,130,246)",
+              borderRadius: 30,
+              height: 52,
+              padding: "0 34px",
+              fontFamily: F,
+              fontWeight: 600,
+              fontSize: 15,
+              color: "#fff",
+              textDecoration: "none",
+            }}
+          >
+            <span className="transition-all duration-300">Book A Demo</span>
+            <div className="w-0 opacity-0 overflow-hidden flex items-center justify-center group-hover:w-6 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300">
+              <svg width="20" height="20" viewBox="0 3 20 22" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
             </div>
-          </ScrollFadeIn>
-        </div>
+          </Link>
+        </ScrollFadeIn>
       </section>
 
-      {/* Agent Sections */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
-          {agentSections.map((agent, idx) => (
-            <ScrollFadeIn key={agent.title}>
-              <div className="space-y-8">
-                {/* Title row */}
-                <div className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="flex-1">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                      {agent.title}
-                    </h2>
-                    <ul className="space-y-2">
-                      {agent.bullets.map((b, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2 text-sm text-gray-600"
-                        >
-                          <span className="text-gray-400 mt-0.5">•</span>
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <Image
-                      src={agent.icon}
-                      alt={agent.title}
-                      width={200}
-                      height={200}
-                      className="w-40 h-40 object-contain"
-                    />
-                  </div>
-                </div>
-
-                {/* Steps row (payroll only) */}
-                {agent.steps.length > 0 && (
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {agent.steps.map((step) => (
-                      <div
-                        key={step.num}
-                        className="bg-[#f7faff] rounded-xl p-4 text-center border border-gray-100"
-                      >
-                        <div className="text-primary font-bold text-lg mb-1">
-                          {step.num}
-                        </div>
-                        <div className="text-xs text-gray-600">
-                          {step.label}
-                        </div>
-                      </div>
+      {/* ========== AGENT SECTIONS ========== */}
+      {agentSections.map((agent, idx) => (
+        <section key={agent.title} style={{ backgroundColor: agent.bg, padding: "80px 40px" }}>
+          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+            <ScrollFadeIn>
+              {/* Top row: Text Left, Graphic Right */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 40,
+                  marginBottom: agent.steps.length > 0 ? 40 : 20,
+                }}
+                className="ps-row"
+              >
+                <div style={{ flex: 1, maxWidth: 500 }}>
+                  <h2
+                    style={{
+                      fontFamily: F,
+                      fontWeight: 600,
+                      fontSize: 34,
+                      color: "rgb(68, 81, 91)",
+                      marginBottom: 16,
+                      letterSpacing: "-0.5px"
+                    }}
+                  >
+                    {agent.title}
+                  </h2>
+                  <ul style={{ display: "flex", flexDirection: "column", gap: 10, paddingLeft: 22, margin: 0, color: "rgb(68, 81, 91)", listStyleType: "disc" }}>
+                    {agent.bullets.map((b, i) => (
+                      <li key={i} style={{ fontFamily: F, fontSize: 15, lineHeight: 1.5, color: "rgb(68, 81, 91)" }}>
+                        {b}
+                      </li>
                     ))}
-                  </div>
-                )}
-
-                {/* Flow diagram */}
-                <div className="rounded-xl overflow-hidden border border-gray-100">
+                  </ul>
+                </div>
+                {/* 3D graphic */}
+                <div style={{ flexShrink: 0 }}>
                   <Image
-                    src={agent.flow}
-                    alt={`${agent.title} workflow`}
-                    width={1314}
-                    height={432}
-                    className="w-full h-auto"
+                    src={agent.icon}
+                    alt={agent.title}
+                    width={280}
+                    height={280}
+                    style={{ objectFit: "contain" }}
                   />
                 </div>
               </div>
-            </ScrollFadeIn>
-          ))}
-        </div>
-      </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 md:py-24 bg-[#f7faff]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Steps (Payroll only) */}
+              {agent.steps.length > 0 && (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: 30,
+                    marginBottom: 50,
+                    maxWidth: 800,
+                    margin: "0 auto 50px",
+                  }}
+                  className="ps-steps-grid"
+                >
+                  {agent.steps.map((step, i) => (
+                    <div key={step.num} style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: 140 }}>
+                      <div style={{ fontFamily: F, fontWeight: 800, fontSize: 20, color: "#7462fa", marginBottom: 12 }}>{step.num}</div>
+                      <div style={{ width: 72, height: 72, marginBottom: 14, position: "relative" }}>
+                        {i === 0 && <Image src="/images/framer/iPL6SejXrAXbXSa0X3eDsgxI.svg" alt="" fill style={{ objectFit: "contain" }} />}
+                        {i === 1 && <Image src="/images/framer/r8mawTTGWojAsXwAKJFyPiSrMg.svg" alt="" fill style={{ objectFit: "contain" }} />}
+                        {i === 2 && <Image src="/images/framer/UWPdP8AjuMRvqxAOw26lSeaxsk.svg" alt="" fill style={{ objectFit: "contain" }} />}
+                        {i === 3 && <Image src="/images/framer/hP86Y8mtRA8t5vkv14woA3dG20.svg" alt="" fill style={{ objectFit: "contain" }} />}
+                      </div>
+                      <div style={{ fontFamily: F, fontWeight: 600, fontSize: 13, color: "#333" }}>{step.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Flow mapping */}
+              <div style={{ textAlign: "center", width: "100%", marginTop: agent.steps.length > 0 ? 20 : 40 }}>
+                <Image
+                  src={agent.flow}
+                  alt={`${agent.title} workflow`}
+                  width={1400}
+                  height={800}
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+              </div>
+            </ScrollFadeIn>
+          </div>
+        </section>
+      ))}
+
+      {/* ========== BENEFITS ========== */}
+      <section style={{ background: "linear-gradient(90deg, #fdf4ff 0%, #e0f2fe 100%)", padding: "80px 40px", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <style>{`
+            .marquee-vertical {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              animation: scrollUp 20s linear infinite;
+            }
+            .marquee-vertical-container:hover .marquee-vertical {
+              animation-play-state: paused;
+            }
+            @keyframes scrollUp {
+              0% { transform: translateY(0); }
+              100% { transform: translateY(-50%); }
+            }
+          `}</style>
           <ScrollFadeIn>
-            <div className="mb-12">
-              <p className="text-xs uppercase tracking-wider text-gray-400 mb-2">
-                KEY TAKEAWAYS
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Benefits to Your Firm
-              </h2>
-              <div className="mt-6">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: 60,
+                alignItems: "center",
+              }}
+              className="ps-row"
+            >
+              <div style={{ flex: 1, paddingRight: 40 }}>
+                <p style={{ display: "flex", alignItems: "center", fontFamily: F, fontWeight: 500, fontSize: 13, color: "rgb(29, 31, 19)", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 20 }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" style={{ fill: "rgb(59, 130, 246)", marginRight: 8, flexShrink: 0 }}>
+                    <path d="M208,144a15.78,15.78,0,0,1-10.42,14.94L146,178l-19,51.62a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88L78,110l19-51.62a15.92,15.92,0,0,1,29.88,0L146,110l51.62,19A15.78,15.78,0,0,1,208,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z"></path>
+                  </svg>
+                  KEY TAKEAWAYS
+                </p>
+                <h2 style={{ fontFamily: F, fontWeight: 600, fontSize: 40, color: "rgb(59, 130, 246)", marginBottom: 20, letterSpacing: "-0.5px", lineHeight: "1.1" }}>
+                  Benefits to Your Firm
+                </h2>
+                <p style={{ fontFamily: F, fontSize: 16, color: "rgb(74, 74, 74)", lineHeight: 1.5, marginBottom: 40 }}>
+                  Save effortlessly with smart automation that maximizes rewards on every purchase, tailored to your needs.
+                </p>
                 <Link
                   href="/contact-us"
-                  className="inline-flex items-center px-6 py-2.5 bg-primary text-white font-semibold rounded-full hover:bg-primary-light transition-all btn-glow text-sm"
+                  className="group btn-glow inline-flex items-center justify-center transition-all duration-300"
+                  style={{
+                    background: "rgb(59,130,246)",
+                    borderRadius: 30,
+                    height: 48,
+                    padding: "0 30px",
+                    fontFamily: F,
+                    fontWeight: 500,
+                    fontSize: 14,
+                    color: "#fff",
+                    textDecoration: "none",
+                  }}
                 >
-                  Get Started!
+                  <span className="transition-all duration-300">Get Started!</span>
+                  <div className="w-0 opacity-0 overflow-hidden flex items-center justify-center group-hover:w-6 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300">
+                    <svg width="20" height="20" viewBox="0 3 20 22" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
                 </Link>
+              </div>
+
+              <div style={{ flex: 1.2, height: 480, overflow: "hidden", maskImage: "linear-gradient(rgba(0,0,0,0) 0%, rgb(0,0,0) 12.5%, rgb(0,0,0) 87.5%, rgba(0,0,0,0) 100%)", WebkitMaskImage: "linear-gradient(rgba(0,0,0,0) 0%, rgb(0,0,0) 12.5%, rgb(0,0,0) 87.5%, rgba(0,0,0,0) 100%)" }} className="marquee-vertical-container">
+                <div className="marquee-vertical" style={{ paddingTop: 20 }}>
+                  {[
+                    {
+                      t: "Competitive Edge",
+                      d: "Adopt cutting-edge AI technology to differentiate your firm in the market.",
+                      p: "M16.5 12c1.38 0 2.49-1.12 2.49-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 2.99-1.34 2.99-3S10.66 5 9 5C7.34 5 6 6.34 6 8s1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.33-2.34 2.37-3.47C10.5 13.1 9.66 13 9 13z"
+                    },
+                    {
+                      t: "Efficiency & Cost Savings",
+                      d: "Free up staff time by automating manual data entry and reconciliation.",
+                      p: "M19.83 7.5l-2.27-2.27c.07-.42.18-.81.32-1.15.08-.18.12-.37.12-.58 0-.83-.67-1.5-1.5-1.5-1.64 0-3.09.79-4 2h-5C4.46 4 2 6.46 2 9.5S4.5 21 4.5 21H10v-2h2v2h5.5l1.68-5.59 2.82-.94V7.5h-2.17zM13 9H8V7h5v2zm3 2c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
+                    },
+                    {
+                      t: "Improved Client Service",
+                      d: "AI calling agents ensure clients are always attended to, even outside of office hours.",
+                      p: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.46 7.12l-2.78 1.15c-.51-1.36-1.58-2.44-2.95-2.94l1.15-2.78c2.1.8 3.77 2.47 4.58 4.57zM12 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zM9.13 4.54l1.17 2.78c-1.38.5-2.47 1.59-2.98 2.97L4.54 9.13c.81-2.11 2.48-3.78 4.59-4.59zM4.54 14.87l2.78-1.15c.51 1.38 1.59 2.46 2.97 2.96l-1.17 2.78c-2.1-.81-3.77-2.48-4.58-4.59zm10.34 4.59l-1.15-2.78c1.37-.51 2.45-1.59 2.95-2.97l2.78 1.17c-.81 2.1-2.48 3.77-4.58 4.58z"
+                    },
+                    {
+                      t: "Scalability",
+                      d: "Easily onboard new clients and employees without increasing admin burden.",
+                      p: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM8 17.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM9.5 8c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5S9.5 9.38 9.5 8zm6.5 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    },
+                    {
+                      t: "Accuracy & Compliance",
+                      d: "Reduce errors and meet regulatory requirements with built-in compliance logic.",
+                      p: "M4 16v6h16v-6c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2zm14 2H6v-2h12v2zM12 2C9.24 2 7 4.24 7 7l5 7 5-7c0-2.76-2.24-5-5-5zm0 9L9 7c0-1.66 1.34-3 3-3s3 1.34 3 3l-3 4z"
+                    },
+                    {
+                      t: "Competitive Edge",
+                      d: "Adopt cutting-edge AI technology to differentiate your firm in the market.",
+                      p: "M16.5 12c1.38 0 2.49-1.12 2.49-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 2.99-1.34 2.99-3S10.66 5 9 5C7.34 5 6 6.34 6 8s1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.33-2.34 2.37-3.47C10.5 13.1 9.66 13 9 13z"
+                    },
+                    {
+                      t: "Efficiency & Cost Savings",
+                      d: "Free up staff time by automating manual data entry and reconciliation.",
+                      p: "M19.83 7.5l-2.27-2.27c.07-.42.18-.81.32-1.15.08-.18.12-.37.12-.58 0-.83-.67-1.5-1.5-1.5-1.64 0-3.09.79-4 2h-5C4.46 4 2 6.46 2 9.5S4.5 21 4.5 21H10v-2h2v2h5.5l1.68-5.59 2.82-.94V7.5h-2.17zM13 9H8V7h5v2zm3 2c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
+                    },
+                    {
+                      t: "Improved Client Service",
+                      d: "AI calling agents ensure clients are always attended to, even outside of office hours.",
+                      p: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7.46 7.12l-2.78 1.15c-.51-1.36-1.58-2.44-2.95-2.94l1.15-2.78c2.1.8 3.77 2.47 4.58 4.57zM12 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zM9.13 4.54l1.17 2.78c-1.38.5-2.47 1.59-2.98 2.97L4.54 9.13c.81-2.11 2.48-3.78 4.59-4.59zM4.54 14.87l2.78-1.15c.51 1.38 1.59 2.46 2.97 2.96l-1.17 2.78c-2.1-.81-3.77-2.48-4.58-4.59zm10.34 4.59l-1.15-2.78c1.37-.51 2.45-1.59 2.95-2.97l2.78 1.17c-.81 2.1-2.48 3.77-4.58 4.58z"
+                    },
+                    {
+                      t: "Scalability",
+                      d: "Easily onboard new clients and employees without increasing admin burden.",
+                      p: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM8 17.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM9.5 8c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5S9.5 9.38 9.5 8zm6.5 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    },
+                    {
+                      t: "Accuracy & Compliance",
+                      d: "Reduce errors and meet regulatory requirements with built-in compliance logic.",
+                      p: "M4 16v6h16v-6c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2zm14 2H6v-2h12v2zM12 2C9.24 2 7 4.24 7 7l5 7 5-7c0-2.76-2.24-5-5-5zm0 9L9 7c0-1.66 1.34-3 3-3s3 1.34 3 3l-3 4z"
+                    },
+                  ].map((b, i) => (
+                    <div 
+                      key={i} 
+                      style={{
+                        display: "flex", 
+                        alignItems: "center", 
+                        justifyContent: "space-between",
+                        padding: "36px 40px", 
+                        background: "radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.4) 0%, rgb(255, 255, 255) 100%)",
+                        backdropFilter: "blur(5px)",
+                        border: "1px solid rgb(234, 240, 221)",
+                        borderRadius: 16,
+                        height: 136,
+                        flexShrink: 0,
+                        width: "100%"
+                      }}
+                    >
+                      <div style={{ flex: 1, paddingRight: 20 }}>
+                        <h3 style={{ fontFamily: F, fontWeight: 600, fontSize: 18, color: "rgb(74, 74, 74)", marginBottom: 8 }}>{b.t}</h3>
+                        <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: 14, color: "rgb(74, 74, 74)", lineHeight: 1.5, margin: 0 }}>
+                          {b.d}
+                        </p>
+                      </div>
+                      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", width: 24, height: 24 }}>
+                        <svg viewBox="0 0 24 24" style={{ width: "100%", height: "100%", fill: "rgb(59, 130, 246)" }}>
+                          <path d={b.p} />
+                        </svg>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </ScrollFadeIn>
-
-          <div className="space-y-4">
-            {benefits.map((b, idx) => (
-              <ScrollFadeIn key={b.title} delay={idx * 60}>
-                <div className="bg-white rounded-xl p-6 border border-gray-100 card-hover">
-                  <h3 className="font-bold text-base mb-1">{b.title}</h3>
-                  <p className="text-sm text-gray-600">{b.desc}</p>
-                </div>
-              </ScrollFadeIn>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section
-        className="py-16 md:py-24"
-        style={{
-          background:
-            "linear-gradient(135deg, #f7faff 0%, #e8f0fe 50%, #f2e6ff 100%)",
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ========== BOTTOM CTA ========== */}
+      <section style={{ backgroundColor: "#fff", padding: "100px 40px" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <ScrollFadeIn>
-            <div className="bg-white/80 backdrop-blur rounded-2xl p-8 md:p-12 text-center border border-gray-200">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Automate Every Aspect of Work Life
-              </h2>
-              <p className="text-gray-600 text-sm max-w-xl mx-auto mb-8">
-                Achieve your goals as fast as your thoughts, simplifying tasks
-                into quick, automated steps with AI efficiency.
-              </p>
-              <Link
-                href="/contact-us"
-                className="inline-flex items-center px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-light transition-all btn-glow text-sm"
-              >
-                Why Wait? Try it today!
-              </Link>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", border: "1px solid rgba(0,0,0,0.06)", borderRadius: 24, padding: "50px 60px", boxShadow: "0 10px 40px rgba(0,0,0,0.03)" }} className="ps-row">
+              <div style={{ flex: 1, maxWidth: 450 }}>
+                <h2 style={{ fontFamily: F, fontWeight: 700, fontSize: 32, color: "rgb(59,130,246)", marginBottom: 16, letterSpacing: "-0.5px" }}>
+                  Automate Every Aspect of Work Life
+                </h2>
+                <p style={{ fontFamily: F, fontSize: 16, color: "rgb(83,82,91)", lineHeight: 1.6, marginBottom: 30 }}>
+                  Achieve your goals as fast as your thoughts, simplifying tasks into quick, automated steps with AI efficiency
+                </p>
+                <Link
+                  href="#"
+                  className="group btn-glow inline-flex items-center justify-center transition-all duration-300"
+                  style={{
+                    background: "rgb(0, 132, 255)",
+                    borderRadius: 30,
+                    height: 48,
+                    padding: "0 30px",
+                    fontFamily: F,
+                    fontWeight: 600,
+                    fontSize: 14,
+                    color: "#fff",
+                    textDecoration: "none",
+                    border: "none",
+                  }}
+                >
+                  <span className="transition-all duration-300">Why Wait? Try it today!</span>
+                  <div className="w-0 opacity-0 overflow-hidden flex items-center justify-center group-hover:w-6 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300">
+                    <svg width="20" height="20" viewBox="0 3 20 22" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              </div>
+
+              {/* Static Hero Icon */}
+              <div style={{ position: "relative", width: 280, height: 280, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Image 
+                  src="/images/framer/hero-static-icon.svg" 
+                  alt="Practice Suite Automation Icon" 
+                  fill 
+                  style={{ objectFit: "contain", opacity: 0.8 }} 
+                />
+              </div>
             </div>
           </ScrollFadeIn>
         </div>

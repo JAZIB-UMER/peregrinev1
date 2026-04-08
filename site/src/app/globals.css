@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 /* ===== FONTS - Mazzard H (from Framer CDN) ===== */
-@font-face { font-family: "Mazzard H"; src: url("https://framerusercontent.com/assets/mrKf7AbibQn8HKrJBAElCsePc.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Mazzard H"; src: url("https://framerusercontent.com/assets/G0cbc1Lopi2LZD9VfSQZWXG5is.woff2") format("woff2"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Mazzard H"; src: url("https://framerusercontent.com/assets/Fy7HoV5wXAqze00ogbIJxekkM.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
-@font-face { font-family: "Mazzard H"; src: url("https://framerusercontent.com/assets/SXLSKgtYjkazFlJq95DyooaPrqc.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Mazzard H"; src: url("https://framerusercontent.com/assets/3UDzjfp65BkHucjpl3SnQby3a6s.woff2") format("woff2"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "Mazzard H"; src: url("https://framerusercontent.com/assets/gNKxK9i09LBuF2SeY9zzsvy0d4.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Mazzard H"; src: url("/fonts/mrKf7AbibQn8HKrJBAElCsePc.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Mazzard H"; src: url("/fonts/G0cbc1Lopi2LZD9VfSQZWXG5is.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Mazzard H"; src: url("/fonts/Fy7HoV5wXAqze00ogbIJxekkM.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Mazzard H"; src: url("/fonts/SXLSKgtYjkazFlJq95DyooaPrqc.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Mazzard H"; src: url("/fonts/3UDzjfp65BkHucjpl3SnQby3a6s.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Mazzard H"; src: url("/fonts/gNKxK9i09LBuF2SeY9zzsvy0d4.woff2") format("woff2"); font-weight: 800; font-display: swap; }
 
 /* ===== BASE ===== */
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: "Mazzard H", "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,25 +50,11 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-/* ===== BUTTON GLOW ===== */
+/* ===== BUTTON GLOW (Animations Removed) ===== */
 .btn-glow {
   position: relative;
-  overflow: hidden;
   transition: all 0.3s ease;
 }
-.btn-glow:hover {
-  transform: scale(1.04);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
-}
-.btn-glow::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-.btn-glow:hover::after { transform: translateX(100%); }
 
 /* ===== RESPONSIVE: mobile hero ===== */
 @media (max-width: 809px) {
@@ -88,6 +74,16 @@ body {
   .blogs-section { padding: 40px 80px !important; }
   .blogs-grid { display: flex !important; flex-direction: column !important; align-items: center !important; }
   .blog-image-box { width: 314px !important; height: 209px !important; }
+  .agents-row { flex-direction: column !important; }
+  .deployments-grid { grid-template-columns: 1fr !important; }
+  .ps-row { flex-direction: column !important; }
+  .ps-steps-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .ps-benefits-row { flex-direction: column !important; }
+  .ps-benefits-card { width: 100% !important; }
+  .concierge-features-grid { grid-template-columns: 1fr !important; }
+  .concierge-how-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .concierge-stats-grid { grid-template-columns: 1fr !important; }
+  .concierge-industry-grid { grid-template-columns: 1fr !important; }
 }
 
 @media (min-width: 810px) and (max-width: 1199px) {
@@ -97,3 +93,25 @@ body {
   .tabs-panel { width: 100% !important; }
   .cta-cal { width: 601px !important; }
 }
+
+/* ===== GRADIENT TEXT (used on subpages) ===== */
+.gradient-text {
+  background: linear-gradient(287deg, rgb(177,76,245) 0%, rgb(72,164,253) 91%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== CARD HOVER ===== */
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 8px 30px rgba(59,130,246,0.12);
+  transform: translateY(-2px);
+}
+
+/* ===== PRIMARY BG ===== */
+.bg-primary { background-color: rgb(59,130,246); }
+.hover\:bg-primary-light:hover { background-color: rgb(96,165,250); }
+.text-primary { color: rgb(59,130,246); }
