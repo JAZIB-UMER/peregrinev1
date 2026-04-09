@@ -54,7 +54,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased" style={{ background: "#fff" }}>
         <Navbar />
-        <main className="flex-1" style={{ maxWidth: 1480, margin: "0 auto", width: "100%" }}>
+        <main className="flex-1" style={{ width: "100%" }}>
           {children}
         </main>
         <Footer />

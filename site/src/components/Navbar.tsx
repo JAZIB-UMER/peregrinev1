@@ -11,15 +11,27 @@ const solutionsDropdown = [
     href: "/practice-suite",
     title: "Practice Suite",
     desc: "Bring Automation in Accounting Firm",
-    iconBg: "rgb(237,243,255)",
-    emoji: "⚡",
+    icon: (
+      <Image 
+        src="/images/practice-icon.svg" 
+        alt="" 
+        width={44} 
+        height={44} 
+      />
+    ),
   },
   {
     href: "/concierge-agent",
     title: "Conceirge Suite",
     desc: "Smarter VoiceAI for Australian Businesses",
-    iconBg: "rgb(237,247,255)",
-    emoji: "🎙️",
+    icon: (
+      <Image 
+        src="/images/concierge-icon.svg" 
+        alt="" 
+        width={44} 
+        height={44} 
+      />
+    ),
   },
 ];
 
@@ -28,16 +40,18 @@ export default function Navbar() {
   const [showSolutions, setShowSolutions] = useState(false);
 
   return (
-    <nav style={{ position: "sticky", top: 0, left: 0, right: 0, zIndex: 50 }}>
-      <div className="mx-auto" style={{ width: 1200, maxWidth: "100%", padding: 10, marginTop: 22 }}>
+    <nav style={{ position: "sticky", top: 20, left: 0, right: 0, zIndex: 50, padding: "0 10px", marginTop: 20, marginBottom: 40 }}>
+      <div className="mx-auto" style={{ width: 1200, maxWidth: "100%" }}>
         <div
           className="flex items-center justify-between"
           style={{
-            height: 60,
+            height: 64,
             backgroundColor: "rgb(255,255,255)",
             border: "2px solid rgb(221,225,240)",
             borderRadius: 50,
-            padding: "0 10px 0 20px",
+            padding: "0 8px 0 24px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
+            backdropFilter: "blur(10px)"
           }}
         >
           {/* Logo */}
@@ -51,12 +65,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center" style={{ gap: 9, padding: 10 }}>
+          <div className="hidden md:flex items-center" style={{ gap: 8, padding: "0 10px" }}>
             {/* Home */}
             <Link
               href="/"
-              className="flex items-center justify-center hover:text-[#3b82f6] transition-colors"
-              style={{ fontFamily: F, fontWeight: 400, letterSpacing: "-0.04em", lineHeight: "120%", height: 40, padding: "0 20px", color: "rgb(74,74,74)" }}
+              className="flex items-center justify-center text-[rgb(74,74,74)] hover:text-[rgb(0,153,255)] transition-colors duration-300"
+              style={{ fontFamily: F, fontWeight: 400, letterSpacing: "-0.04em", lineHeight: "120%", height: 40, padding: "0 20px", textDecoration: "none" }}
             >
               Home
             </Link>
@@ -68,12 +82,12 @@ export default function Navbar() {
               onMouseLeave={() => setShowSolutions(false)}
             >
               <Link
-                href="/practice-suite"
-                className="flex items-center justify-center transition-colors"
+                href="/"
+                className={`flex items-center justify-center transition-colors duration-300 hover:text-[rgb(0,153,255)] ${showSolutions ? "text-[rgb(0,153,255)]" : "text-[rgb(74,74,74)]"}`}
                 style={{
                   fontFamily: F, fontWeight: 400, letterSpacing: "-0.04em", lineHeight: "120%",
                   height: 40, padding: "0 20px",
-                  color: showSolutions ? "rgb(59,130,246)" : "rgb(74,74,74)",
+                  textDecoration: "none",
                 }}
               >
                 Solutions
@@ -83,37 +97,37 @@ export default function Navbar() {
               {showSolutions && (
                 <div
                   className="absolute"
-                  style={{ top: "100%", left: -40, paddingTop: 10 }}
+                  style={{ top: "100%",  transform: "translateX(-10%)", paddingTop: 24 }}
                 >
                   <div
                     style={{
                       backgroundColor: "#fff",
-                      border: "1px solid rgb(221,225,240)",
-                      borderRadius: 20,
-                      padding: 20,
-                      width: 340,
+                      border: "1px solid rgb(0,153,255)",
+                      borderRadius: 8,
+                      padding: 15,
+                      width: 365,
                       boxShadow: "0 8px 30px rgba(0,0,0,0.06)",
                     }}
                   >
-                    <div className="flex flex-col" style={{ gap: 24 }}>
+                    <div className="flex flex-col" style={{ gap: 16 }}>
                       {solutionsDropdown.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="flex items-center hover:opacity-80 transition-opacity"
+                          className="flex items-center transition-transform duration-300 hover:-translate-y-1"
                           style={{ gap: 16, textDecoration: "none" }}
                         >
                           <div
                             className="shrink-0 flex items-center justify-center"
-                            style={{ width: 48, height: 48, borderRadius: 14, backgroundColor: item.iconBg }}
+                            style={{ width: 44, height: 44, }}
                           >
-                            <span style={{ fontSize: 22 }}>{item.emoji}</span>
+                            {item.icon}
                           </div>
                           <div>
-                            <p style={{ fontFamily: F, fontWeight: 500, fontSize: 17, lineHeight: "22px", color: "rgb(23,26,31)" }}>
+                            <p style={{ fontFamily: F, fontWeight: 500, fontSize: 16, lineHeight: "22px", color: "rgb(74,74,74)" }}>
                               {item.title}
                             </p>
-                            <p style={{ fontFamily: F, fontWeight: 400, fontSize: 14, lineHeight: "20px", color: "rgb(133,133,133)", marginTop: 3 }}>
+                            <p style={{ fontFamily: F, fontWeight: 400, fontSize: 13, lineHeight: "20px", color: "rgb(133,133,133)", marginTop: 2 }}>
                               {item.desc}
                             </p>
                           </div>
@@ -134,25 +148,31 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center justify-center hover:text-[#3b82f6] transition-colors"
-                style={{ fontFamily: F, fontWeight: 400, letterSpacing: "-0.04em", lineHeight: "120%", height: 40, padding: "0 20px", color: "rgb(74,74,74)" }}
+                className="flex items-center justify-center text-[rgb(74,74,74)] hover:text-[rgb(0,153,255)] transition-colors duration-300"
+                style={{ fontFamily: F, fontWeight: 400, letterSpacing: "-0.04em", lineHeight: "120%", height: 40, padding: "0 20px", textDecoration: "none" }}
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          {/* CTA */}
           <div className="hidden md:block">
             <Link
               href="/contact-us"
-              className="inline-flex items-center justify-center transition-all"
+              className="group btn-glow inline-flex items-center justify-center transition-all duration-300"
               style={{
                 backgroundColor: "rgb(59,130,246)", borderRadius: 30, height: 50, padding: "12px 24px",
                 fontFamily: F, fontWeight: 500, fontSize: 14, letterSpacing: "-0.04em", lineHeight: "120%", color: "#fff",
+                textDecoration: "none",
               }}
             >
-              Get Now
+              <span className="transition-all duration-300">Get Now</span>
+              <div className="w-0 opacity-0 overflow-hidden flex items-center justify-center group-hover:w-6 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300">
+                <svg width="20" height="20" viewBox="0 3 20 22" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </div>
             </Link>
           </div>
 
@@ -179,7 +199,7 @@ export default function Navbar() {
                   <div className="flex flex-col" style={{ gap: 12, paddingLeft: 16 }}>
                     {solutionsDropdown.map((s) => (
                       <Link key={s.href} href={s.href} style={{ fontFamily: F, color: "rgb(59,130,246)", fontSize: 14 }} onClick={() => setMobileOpen(false)}>
-                        {s.emoji} {s.title}
+                        {s.title}
                       </Link>
                     ))}
                   </div>
